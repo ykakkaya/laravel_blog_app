@@ -7,11 +7,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Classy Register Form Responsive Widget Template :: W3layouts</title>
+<title>Blog Project Register Form</title>
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Classy Register Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<meta name="keywords" content="" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Meta tag Keywords -->
@@ -24,7 +24,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 </head>
 <body>
 <div class="header">
-	<h1>Classy Register Form</h1>
+	<h1>Blog Project Register Form</h1>
 </div>
 <div class="w3-main">
 	<!-- Main -->
@@ -40,7 +40,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<input type="email" name="email" placeholder="Your Email" required="">
 				<label> Password </label>
 				<input type="password" name="password" placeholder="Your Password" required="">
-				<label> CONFIRM Password </label>
+				<label> Confirm Password </label>
 				<input type="password" name="password_confirmation" placeholder="Confirm Password" required="">
 			</div>
 			<div class="make wow shake">
@@ -52,7 +52,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 </div>
 <!-- footer -->
 <div class="footer-w3l">
-	<p>&copy; 2017 Classy Register Form. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+	<p>&copy; 2024 Blog Project Register Form --ykakkaya-- <a href="#"></a></p>
 </div>
 <!-- //footer -->
 <!-- js-scripts-->

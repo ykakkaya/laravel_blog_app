@@ -1,18 +1,13 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html lang="zxx">
 
 <head>
-	<title>Particles Login Form Form Responsive Widget Template :: w3layouts</title>
+	<title>Yakup Akkaya Blog Project</title>
 	<!-- Meta-Tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Particles Login Form Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+	<meta name="keywords" content="">
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -34,7 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div id="particles-js"></div>
 	<!-- //particles -->
 	<div class="w3ls-pos">
-		<h1>Particles Login Form</h1>
+		<h1>Admin Panel Login Form</h1>
 		<div class="w3ls-login box">
 			<!-- form starts here -->
             <form method="POST" action="{{ route('login') }}">
@@ -45,10 +40,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="agile-field-txt">
 					<input type="password" name="password" placeholder="******" required="" id="myInput" />
-					<div class="agile_label">
+					{{-- <div class="agile_label">
 						<input id="check3" name="check3" type="checkbox" value="show password">
 						<label class="check" for="check3">Remember me</label>
-					</div>
+					</div> --}}
 				</div>
 				<div class="w3ls-bot">
 					<input type="submit" value="LOGIN">
@@ -58,8 +53,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!-- //form ends here -->
 		<!--copyright-->
 		<div class="copy-wthree">
-			<p>© 2018 Particles Login Form. All Rights Reserved | Design by
-				<a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+			<p>© 2024 Blog Project Admin Panel Login Form --ykakkaya--
+				<a href="#" target="_blank"></a>
 			</p>
 		</div>
 		<!--//copyright-->
