@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->bool('status')->default('0');
+            $table->boolean('status')->default('0');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

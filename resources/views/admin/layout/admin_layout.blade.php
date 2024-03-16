@@ -130,9 +130,11 @@
     <!--datatable-->
     <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
     <script type="text/javascript">
-        $(document).ready( function () {
-    $('#example1').DataTable();
-} );
+       $(document).ready( function () {
+    $('#example1').DataTable({
+        paging: true,
+    });
+});
     </script>
 
 </body>
