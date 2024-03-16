@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('Admin/Admin/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('Admin/Admin/plugins/summernote/summernote-bs4.min.css') }}">
+    <!--datatable-->
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
 
 </head>
 
@@ -125,7 +127,14 @@
     <script src="{{ asset('Admin/Admin/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('Admin/Admin/dist/js/pages/dashboard.js') }}"></script>
-   
+    <!--datatable-->
+    <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+    $('#example1').DataTable();
+} );
+    </script>
+
 </body>
 
 </html>

@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('short_description');
-            $table->text('long_description');
-            $table->string('image');
+            $table->string('short_description')->nullable();
+            $table->text('long_description')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('status')->default('0');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('comment_id');
             $table->timestamps();
