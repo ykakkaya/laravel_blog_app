@@ -23,7 +23,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories=Category::where('user_id', auth()->user()->id)->get();
+        $categories=Category::where('user_id', auth()->user()->id)->latest()->get();
         return view('admin.article.create',compact('categories'));
     }
 
@@ -48,7 +48,6 @@ class ArticleController extends Controller
             'status'=>$request->status,
             'image'=>$image,
             'user_id'=>auth()->user()->id,
-
         ]);
         return redirect()->route('admin.article.index');
     }
