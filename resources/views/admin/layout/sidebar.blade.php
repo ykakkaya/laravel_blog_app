@@ -52,7 +52,7 @@
             <p>
               Categories
               <i class="fas fa-angle-right right"></i>
-              <span class="badge badge-info right">6</span>
+              <span class="badge badge-info right">{{App\Models\Category::count()}}</span>
             </p>
           </a>
           <ul class="nav nav-treeview">

@@ -136,7 +136,9 @@
     });
 });
     </script>
-
+<!--sweetalert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ asset('Admin/Admin/dist/js/delete.js') }}"></script>
 </body>
 
 </html>

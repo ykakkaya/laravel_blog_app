@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories=Category::all();
+        return view('admin.category.index',compact('categories'));;
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -28,7 +30,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $category=Category::create([
+            'title'=>$request->title,
+            'status'=>$request->status,
+        ]);
+
+        return redirect()->route('category.index');
     }
 
     /**
@@ -44,7 +52,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category=Category::findorfail($id);
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -52,7 +61,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category=Category::findorfail($id);
+        $category->update([
+            'title'=>$request->title,
+            'status'=>$request->status,
+        ]);
+        return redirect()->route('category.index');
     }
 
     /**
@@ -60,6 +74,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category=Category::findorfail($id);
+        $category->delete();
+        return redirect()->route('category.index');
     }
 }

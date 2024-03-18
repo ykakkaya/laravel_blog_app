@@ -45,10 +45,10 @@ Route::get('/article-destroy/{id}',[ArticleController::class,'index'])->name('ar
 //category
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');
 Route::get('/category-create',[CategoryController::class,'create'])->name('category.create');
-Route::post('/category-store',[CategoryController::class,'index'])->name('category.store');
-Route::get('/category-edit/{id}',[CategoryController::class,'index'])->name('category.edit');
-Route::post('/category-update/{id}',[CategoryController::class,'index'])->name('category.update');
-Route::get('/category-destroy/{id}',[CategoryController::class,'index'])->name('category.destroy');
+Route::post('/category-store',[CategoryController::class,'store'])->name('category.store');
+Route::get('/category-edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
+Route::post('/category-update/{id}',[CategoryController::class,'update'])->name('category.update');
+Route::get('/category-destroy/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
 //comment
 Route::get('/comment',[CommentController::class,'index'])->name('comment.index');
 Route::get('/comment-create',[CommentController::class,'create'])->name('comment.create');

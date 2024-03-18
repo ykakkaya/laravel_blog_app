@@ -8,7 +8,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Blog Articles</h3>
+                            <h3 class="card-title">Blog Categories</h3>
                         </div>
                         <div class="card">
                             {{-- <div class="card-header">
@@ -19,48 +19,34 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Category</th>
+                                            <th>Category ID</th>
                                             <th>Title</th>
-                                            <th>Short Description</th>
-                                            <th>Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Travel</td>
-                                            <td>Karadeniz
-                                            </td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nulla magni ad reprehenderit culpa nostrum illo amet voluptatem a, nam est maxime dolores repudiandae tempore impedit tenetur harum quas omnis.Ipsa dignissimos ab iure cum, voluptates, quibusdam rem, consequuntur dolorem totam eligendi molestias ducimus ea at assumenda magni optio odio. Voluptatem enim cupiditate labore adipisci quaerat, quos accusamus nisi libero.</td>
-                                            <td><img src="https://picsum.photos/200/300"></td>
-                                            <td>Active</td>
+                                        @foreach ($categories as $category)
+ <tr>
+                                            <td>{{$category->id}}</td>
+                                            <td>{{$category->title}}</td>
+                                            <td>{{$category->status==1?"Active":"Passive"}}</td>
+
+
                                             <td>
-                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="{{route('category.edit',$category->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="{{route('category.destroy',$category->id)}}" id="delete" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Technology</td>
-                                            <td>Apple
-                                            </td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nulla magni ad reprehenderit culpa nostrum illo amet voluptatem a, nam est maxime dolores repudiandae tempore impedit tenetur harum quas omnis.Ipsa dignissimos ab iure cum, voluptates, quibusdam rem, consequuntur dolorem totam eligendi molestias ducimus ea at assumenda magni optio odio. Voluptatem enim cupiditate labore adipisci quaerat, quos accusamus nisi libero.</td>
-                                            <td><img src="https://picsum.photos/seed/picsum/200/300"></td>
-                                            <td>Active</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+
 
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Category ID</th>
                                             <th>Title</th>
-                                            <th>Short Description</th>
-                                            <th>Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
