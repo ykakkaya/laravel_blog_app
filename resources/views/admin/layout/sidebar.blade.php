@@ -27,7 +27,7 @@
             <p>
               ARTICLES
               <i class="right fas fa-angle-right"></i>
-              <span class="badge badge-info right">6</span>
+              <span class="badge badge-info right">{{App\Models\Article::count()}}</span>
             </p>
           </a>
           <ul class="nav nav-treeview">

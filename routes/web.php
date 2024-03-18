@@ -37,10 +37,10 @@ Route::middleware('auth')->group(function () {
 //article
 Route::get('/article',[ArticleController::class,'index'])->name('article.index');
 Route::get('/article-create',[ArticleController::class,'create'])->name('article.create');
-Route::post('/article-store',[ArticleController::class,'index'])->name('article.store');
-Route::get('/article-edit/{id}',[ArticleController::class,'index'])->name('article.edit');
-Route::post('/article-update/{id}',[ArticleController::class,'index'])->name('article.update');
-Route::get('/article-destroy/{id}',[ArticleController::class,'index'])->name('article.destroy');
+Route::post('/article-store',[ArticleController::class,'store'])->name('article.store');
+Route::get('/article-edit/{id}',[ArticleController::class,'edit'])->name('article.edit');
+Route::post('/article-update/{id}',[ArticleController::class,'update'])->name('article.update');
+Route::get('/article-destroy/{id}',[ArticleController::class,'destroy'])->name('article.destroy');
 
 //category
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');

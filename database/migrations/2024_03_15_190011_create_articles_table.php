@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('status')->default('0');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('comment_id');
+            $table->unsignedBigInteger('comment_id')->nullable();
             $table->timestamps();
         });
     }

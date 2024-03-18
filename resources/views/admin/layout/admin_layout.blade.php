@@ -30,7 +30,10 @@
     <link rel="stylesheet" href="{{ asset('Admin/Admin/plugins/summernote/summernote-bs4.min.css') }}">
     <!--datatable-->
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
-
+<!--summernote-->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -139,6 +142,14 @@
 <!--sweetalert-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{{ asset('Admin/Admin/dist/js/delete.js') }}"></script>
+<!--summernote-->
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#summernote').summernote({
+    height: 200,
+  });
+});
+</script>
 </body>
 
 </html>

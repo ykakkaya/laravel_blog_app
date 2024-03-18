@@ -29,30 +29,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Travel</td>
-                                            <td>Karadeniz
-                                            </td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nulla magni ad reprehenderit culpa nostrum illo amet voluptatem a, nam est maxime dolores repudiandae tempore impedit tenetur harum quas omnis.Ipsa dignissimos ab iure cum, voluptates, quibusdam rem, consequuntur dolorem totam eligendi molestias ducimus ea at assumenda magni optio odio. Voluptatem enim cupiditate labore adipisci quaerat, quos accusamus nisi libero.</td>
-                                            <td><img src="https://picsum.photos/200/300"></td>
-                                            <td>Active</td>
+                                        @foreach ($articles as $article )
+<tr>
+                                            <td>{{$article->category->title}}</td>
+                                            <td>{{$article->title}}</td>
+                                            <td>{{$article->short_description}}</td>
+                                            <td><img src="{{asset($article->image)}}" style="width: 15%"></td>
+                                            <td>{{$article->status==1? "Active":"Passive"}}</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="{{route('article.edit',$article->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="{{route('article.destroy',$article->id)}}" id="delete" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Technology</td>
-                                            <td>Apple
-                                            </td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nulla magni ad reprehenderit culpa nostrum illo amet voluptatem a, nam est maxime dolores repudiandae tempore impedit tenetur harum quas omnis.Ipsa dignissimos ab iure cum, voluptates, quibusdam rem, consequuntur dolorem totam eligendi molestias ducimus ea at assumenda magni optio odio. Voluptatem enim cupiditate labore adipisci quaerat, quos accusamus nisi libero.</td>
-                                            <td><img src="https://picsum.photos/seed/picsum/200/300"></td>
-                                            <td>Active</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+
 
                                     </tbody>
                                     <tfoot>
