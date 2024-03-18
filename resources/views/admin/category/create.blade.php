@@ -2,7 +2,7 @@
 @section('admin_content')
 
     <div class="card">
-        <form action="{{route('category.store')}}" method="POST">
+        <form action="{{route('admin.category.store')}}" method="POST">
             @csrf
             <label>Category Title</label>
             <input type="text" class="form-control" name="title">

@@ -32,30 +32,30 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-});
 
+    Route::prefix('admin')->group(function () {
 //article
-Route::get('/article',[ArticleController::class,'index'])->name('article.index');
-Route::get('/article-create',[ArticleController::class,'create'])->name('article.create');
-Route::post('/article-store',[ArticleController::class,'store'])->name('article.store');
-Route::get('/article-edit/{id}',[ArticleController::class,'edit'])->name('article.edit');
-Route::post('/article-update/{id}',[ArticleController::class,'update'])->name('article.update');
-Route::get('/article-destroy/{id}',[ArticleController::class,'destroy'])->name('article.destroy');
+        Route::get('/article',[ArticleController::class,'index'])->name('admin.article.index');
+        Route::get('/article-create',[ArticleController::class,'create'])->name('admin.article.create');
+        Route::post('/article-store',[ArticleController::class,'store'])->name('admin.article.store');
+        Route::get('/article-edit/{id}',[ArticleController::class,'edit'])->name('admin.article.edit');
+        Route::post('/article-update/{id}',[ArticleController::class,'update'])->name('admin.article.update');
+        Route::get('/article-destroy/{id}',[ArticleController::class,'destroy'])->name('admin.article.destroy');
 
-//category
-Route::get('/category',[CategoryController::class,'index'])->name('category.index');
-Route::get('/category-create',[CategoryController::class,'create'])->name('category.create');
-Route::post('/category-store',[CategoryController::class,'store'])->name('category.store');
-Route::get('/category-edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
-Route::post('/category-update/{id}',[CategoryController::class,'update'])->name('category.update');
-Route::get('/category-destroy/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
-//comment
-Route::get('/comment',[CommentController::class,'index'])->name('comment.index');
-Route::get('/comment-create',[CommentController::class,'create'])->name('comment.create');
-Route::post('/comment-store',[CommentController::class,'index'])->name('comment.store');
-Route::get('/comment-edit/{id}',[CommentController::class,'index'])->name('comment.edit');
-Route::post('/comment-update/{id}',[CommentController::class,'index'])->name('comment.update');
-Route::get('/comment-destroy/{id}',[CommentController::class,'index'])->name('comment.destroy');
-
-
+        //category
+        Route::get('/category',[CategoryController::class,'index'])->name('admin.category.index');
+        Route::get('/category-create',[CategoryController::class,'create'])->name('admin.category.create');
+        Route::post('/category-store',[CategoryController::class,'store'])->name('admin.category.store');
+        Route::get('/category-edit/{id}',[CategoryController::class,'edit'])->name('admin.category.edit');
+        Route::post('/category-update/{id}',[CategoryController::class,'update'])->name('admin.category.update');
+        Route::get('/category-destroy/{id}',[CategoryController::class,'destroy'])->name('admin.category.destroy');
+        //comment
+        Route::get('/comment',[CommentController::class,'index'])->name('admin.comment.index');
+        Route::get('/comment-create',[CommentController::class,'create'])->name('admin.comment.create');
+        Route::post('/comment-store',[CommentController::class,'index'])->name('admin.comment.store');
+        Route::get('/comment-edit/{id}',[CommentController::class,'index'])->name('admin.comment.edit');
+        Route::post('/comment-update/{id}',[CommentController::class,'index'])->name('admin.comment.update');
+        Route::get('/comment-destroy/{id}',[CommentController::class,'index'])->name('admin.comment.destroy');
+    });
+});
 require __DIR__.'/auth.php';

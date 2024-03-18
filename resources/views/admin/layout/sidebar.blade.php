@@ -27,18 +27,18 @@
             <p>
               ARTICLES
               <i class="right fas fa-angle-right"></i>
-              <span class="badge badge-info right">{{App\Models\Article::count()}}</span>
+              <span class="badge badge-info right">{{App\Models\Article::where('user_id', auth()->user()->id)->count()}}</span>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{route('article.index')}}" class="nav-link active">
+              <a href="{{route('admin.article.index')}}" class="nav-link active">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Articles Index</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('article.create')}}" class="nav-link">
+              <a href="{{route('admin.article.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Articles Create</p>
               </a>
@@ -52,18 +52,18 @@
             <p>
               Categories
               <i class="fas fa-angle-right right"></i>
-              <span class="badge badge-info right">{{App\Models\Category::count()}}</span>
+              <span class="badge badge-info right">{{App\Models\Category::where('user_id', auth()->user()->id)->count()}}</span>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{route('category.index')}}" class="nav-link">
+              <a href="{{route('admin.category.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Category Index</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('category.create')}}" class="nav-link">
+              <a href="{{route('admin.category.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Category Create</p>
               </a>
@@ -81,7 +81,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{route('comment.index')}}" class="nav-link">
+              <a href="{{route('admin.comment.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Comments Index</p>
               </a>

@@ -2,7 +2,7 @@
 @section('admin_content')
 
     <div class="card">
-        <form action="{{route('article.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin.article.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <label> Title</label>
             <input type="text" class="form-control" name="title">

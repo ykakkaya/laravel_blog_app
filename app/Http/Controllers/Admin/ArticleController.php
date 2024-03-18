@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles=Article::all();
+        $articles=Article::where('user_id', auth()->user()->id)->get();
         return view('admin.article.index',compact('articles'));
     }
 
@@ -23,7 +23,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories=Category::all();
+        $categories=Category::where('user_id', auth()->user()->id)->get();
         return view('admin.article.create',compact('categories'));
     }
 
@@ -47,9 +47,10 @@ class ArticleController extends Controller
             'category_id'=>$request->category_id,
             'status'=>$request->status,
             'image'=>$image,
+            'user_id'=>auth()->user()->id,
 
         ]);
-        return redirect()->route('article.index');
+        return redirect()->route('admin.article.index');
     }
 
     /**
@@ -67,7 +68,7 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article=Article::findorfail($id);
-        $categories=Category::all();
+        $categories=Category::where('user_id', auth()->user()->id)->get();
         return view('admin.article.edit',compact(['article','categories']));
     }
 
@@ -92,7 +93,7 @@ class ArticleController extends Controller
             'image'=>$image,
 
         ]);
-        return redirect()->route('article.index');
+        return redirect()->route('admin.article.index');
 
     }
 
@@ -103,6 +104,6 @@ class ArticleController extends Controller
     {
         $article=Article::findorfail($id);
         $article->delete();
-        return redirect()->route('article.index');
+        return redirect()->route('admin.article.index');
     }
 }

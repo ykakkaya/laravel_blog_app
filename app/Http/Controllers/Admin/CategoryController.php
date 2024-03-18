@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
+        $categories=Category::where('user_id', auth()->user()->id)->get();
         return view('admin.category.index',compact('categories'));;
     }
 
@@ -32,11 +32,12 @@ class CategoryController extends Controller
     {
 
         $category=Category::create([
+            'user_id'=>auth()->user()->id,
             'title'=>$request->title,
             'status'=>$request->status,
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -66,7 +67,7 @@ class CategoryController extends Controller
             'title'=>$request->title,
             'status'=>$request->status,
         ]);
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -76,6 +77,6 @@ class CategoryController extends Controller
     {
         $category=Category::findorfail($id);
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 }

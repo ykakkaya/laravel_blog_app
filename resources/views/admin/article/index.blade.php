@@ -37,8 +37,8 @@
                                             <td><img src="{{asset($article->image)}}" style="width: 15%"></td>
                                             <td>{{$article->status==1? "Active":"Passive"}}</td>
                                             <td>
-                                                <a href="{{route('article.edit',$article->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="{{route('article.destroy',$article->id)}}" id="delete" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="{{route('admin.article.edit',$article->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="{{route('admin.article.destroy',$article->id)}}" id="delete" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
                                         @endforeach

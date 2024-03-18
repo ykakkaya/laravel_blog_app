@@ -2,7 +2,7 @@
 @section('admin_content')
 
     <div class="card">
-        <form action="{{route('category.update',$category->id)}}" method="POST">
+        <form action="{{route('admin.category.update',$category->id)}}" method="POST">
             @csrf
 
             <label>Category Title</label>
