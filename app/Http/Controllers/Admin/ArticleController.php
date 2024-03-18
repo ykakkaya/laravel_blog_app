@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles=Article::where('user_id', auth()->user()->id)->get();
+        $articles=Article::where('user_id', auth()->user()->id)->latest()->get();
         return view('admin.article.index',compact('articles'));
     }
 
@@ -77,22 +77,28 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $article=Article::findorfail($id);
-        $image='';
-        if ($request->hasFile('image')) {
-            $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('uploads'), $imageName);
-            $image = 'uploads/' . $imageName;
-        };
-        $article->update([
-            'title'=>$request->title,
-            'short_description'=>$request->short_description,
-            'long_description'=>$request->long_description,
-            'category_id'=>$request->category_id,
-            'status'=>$request->status,
-            'image'=>$image,
 
-        ]);
+        $article=Article::findorfail($id);
+        if(!$article->has('comments')){
+
+            $image='';
+
+            if ($request->hasFile('image')) {
+                $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
+                $request->file('image')->move(public_path('uploads'), $imageName);
+                $image = 'uploads/' . $imageName;
+            };
+            $article->update([
+                'title'=>$request->title,
+                'short_description'=>$request->short_description,
+                'long_description'=>$request->long_description,
+                'category_id'=>$request->category_id,
+                'status'=>$request->status,
+                'image'=>$image,
+
+            ]);
+            return redirect()->route('admin.article.index');
+        }
         return redirect()->route('admin.article.index');
 
     }
