@@ -15,7 +15,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles=Article::where('user_id', auth()->user()->id)->latest()->get();
-        
+
         return view('admin.article.index',compact('articles'));
     }
 
@@ -50,6 +50,8 @@ class ArticleController extends Controller
             'image'=>$image,
             'user_id'=>auth()->user()->id,
         ]);
+
+        $article->save();
         return redirect()->route('admin.article.index');
     }
 
@@ -91,12 +93,13 @@ class ArticleController extends Controller
             $article->update([
                 'title'=>$request->title,
                 'short_description'=>$request->short_description,
-                'long_description'=>$request->long_description,
+                'long_description' => $request->long_description,
                 'category_id'=>$request->category_id,
                 'status'=>$request->status,
                 'image'=>$image,
 
             ]);
+            $article->save();
             return redirect()->route('admin.article.index');
         }
         return redirect()->route('admin.article.index');

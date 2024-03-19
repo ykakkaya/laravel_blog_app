@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Front\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ use App\Http\Controllers\Admin\CommentController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
@@ -57,4 +58,9 @@ Route::middleware('auth')->group(function () {
 
     });
 });
+
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/index',[HomeController::class,'index'])->name('home.index');
+Route::get('/post/{id}',[HomeController::class,'show'])->name('home.post.show');
+
 require __DIR__.'/auth.php';
