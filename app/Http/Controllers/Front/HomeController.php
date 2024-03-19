@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->get();
+        $articles = Article::latest()->where('status','1')->get();
         return view('front.index', compact('articles'));
     }
 

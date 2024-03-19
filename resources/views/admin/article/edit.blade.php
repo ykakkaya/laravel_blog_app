@@ -16,8 +16,8 @@
             <br>
             <label> Status</label>
             <select class="custom-select" name="status">
-                <option value="0" {{$article->status==0 ?'select':''}}>Passive</option>
-                <option value="1" {{$article->status==1? 'select':''}}>Active</option>
+                <option value="0" {{$article->status==0 ?'selected':''}}>Passive</option>
+                <option value="1" {{$article->status==1? 'selected':''}}>Active</option>
             </select>
             <label> Category</label>
             <select class="custom-select" name="category_id">
