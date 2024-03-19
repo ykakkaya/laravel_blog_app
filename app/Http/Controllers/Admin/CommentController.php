@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Comment;
+use App\Models\Article;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -12,7 +15,14 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return view('admin.comments.index');
+        $articles = Article::where('user_id', auth()->user()->id)->latest()->get();
+        $comments = collect();
+
+        foreach ($articles as $article) {
+            $comments = $comments->merge($article->comments);
+        }
+
+        return view('admin.comments.index',compact('comments'));
     }
 
     /**
@@ -36,7 +46,8 @@ class CommentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $comment=Comment::findOrFail($id);
+        return view('admin.comments.show',compact('comment'));
     }
 
     /**
@@ -44,7 +55,8 @@ class CommentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $comment=Comment::findorfail($id);
+       return view('admin.comments.edit',compact('comment'));
     }
 
     /**
@@ -52,7 +64,13 @@ class CommentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $comment=Comment::findorfail($id);
+        $comment->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'status'=>$request->status,
+        ]);
+        return redirect()->route('admin.comment.index');
     }
 
     /**

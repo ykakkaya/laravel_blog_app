@@ -51,11 +51,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/category-destroy/{id}',[CategoryController::class,'destroy'])->name('admin.category.destroy');
         //comment
         Route::get('/comment',[CommentController::class,'index'])->name('admin.comment.index');
-        Route::get('/comment-create',[CommentController::class,'create'])->name('admin.comment.create');
-        Route::post('/comment-store',[CommentController::class,'index'])->name('admin.comment.store');
-        Route::get('/comment-edit/{id}',[CommentController::class,'index'])->name('admin.comment.edit');
-        Route::post('/comment-update/{id}',[CommentController::class,'index'])->name('admin.comment.update');
-        Route::get('/comment-destroy/{id}',[CommentController::class,'index'])->name('admin.comment.destroy');
+        Route::get('/comment-show/{id}',[CommentController::class,'show'])->name('admin.comment.show');
+        Route::get('/comment-edit/{id}',[CommentController::class,'edit'])->name('admin.comment.edit');
+        Route::post('/comment-update/{id}',[CommentController::class,'update'])->name('admin.comment.update');
+
     });
 });
 require __DIR__.'/auth.php';

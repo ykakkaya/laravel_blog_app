@@ -27,20 +27,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         @foreach ($categories as $category)
- <tr>
+                                        <tr>
                                             <td>{{$category->id}}</td>
                                             <td>{{$category->title}}</td>
                                             <td>{{$category->status==1?"Active":"Passive"}}</td>
-
-
                                             <td>
                                                 <a href="{{route('admin.category.edit',$category->id)}}" class="btn btn-warning btn-sm">Edit</a>
                                                 <a href="{{route('admin.category.destroy',$category->id)}}" id="delete" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
                                         @endforeach
-
 
                                     </tbody>
                                     <tfoot>

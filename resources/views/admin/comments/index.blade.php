@@ -19,50 +19,40 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Category</th>
+                                            <th>Article</th>
                                             <th>Title</th>
-                                            <th>Short Description</th>
-                                            <th>Image</th>
+                                            <th>Description</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Author</th>
+                                            <th>Actions</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Travel</td>
-                                            <td>Karadeniz
-                                            </td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nulla magni ad reprehenderit culpa nostrum illo amet voluptatem a, nam est maxime dolores repudiandae tempore impedit tenetur harum quas omnis.Ipsa dignissimos ab iure cum, voluptates, quibusdam rem, consequuntur dolorem totam eligendi molestias ducimus ea at assumenda magni optio odio. Voluptatem enim cupiditate labore adipisci quaerat, quos accusamus nisi libero.</td>
-                                            <td><img src="https://picsum.photos/200/300"></td>
-                                            <td>Active</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Technology</td>
-                                            <td>Apple
-                                            </td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nulla magni ad reprehenderit culpa nostrum illo amet voluptatem a, nam est maxime dolores repudiandae tempore impedit tenetur harum quas omnis.Ipsa dignissimos ab iure cum, voluptates, quibusdam rem, consequuntur dolorem totam eligendi molestias ducimus ea at assumenda magni optio odio. Voluptatem enim cupiditate labore adipisci quaerat, quos accusamus nisi libero.</td>
-                                            <td><img src="https://picsum.photos/seed/picsum/200/300"></td>
-                                            <td>Active</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($comments as $comment)
+                                            <tr>
+                                                <th>{{ $comment->article->title }}</th>
+                                                <th>{{ $comment->title }}</th>
+                                                <th>{!! $comment->description !!}</th>
+                                                <th>{{ $comment->status ==0?"Passive":"Active" }}</th>
+                                                <th>{{ $comment->user->name }}</th>
+                                                <th><a href="{{route('admin.comment.show',$comment->id)}}" class="btn btn-info">Show</a>
+                                                    <a href="{{route('admin.comment.edit',$comment->id)}}" class="btn btn-warning">Update</a></th>
 
+
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
+
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Article</th>
                                             <th>Title</th>
-                                            <th>Short Description</th>
-                                            <th>Image</th>
+                                            <th>Description</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Author</th>
+                                            <th>Actions</th>
+
                                         </tr>
                                     </tfoot>
                                 </table>

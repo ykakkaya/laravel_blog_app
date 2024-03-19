@@ -15,6 +15,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles=Article::where('user_id', auth()->user()->id)->latest()->get();
+        
         return view('admin.article.index',compact('articles'));
     }
 
