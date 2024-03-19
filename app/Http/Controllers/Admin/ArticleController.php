@@ -51,8 +51,11 @@ class ArticleController extends Controller
             'user_id'=>auth()->user()->id,
         ]);
 
-        $article->save();
-        return redirect()->route('admin.article.index');
+        $notification = [
+            'message'=>'Article created successfully!',
+            'alert-type'=>'success'
+        ];
+        return redirect()->route('admin.article.index')->with($notification);
     }
 
     /**
@@ -99,10 +102,18 @@ class ArticleController extends Controller
                 'image'=>$image,
 
             ]);
-            $article->save();
-            return redirect()->route('admin.article.index');
+            $notification = [
+                'message'=>'Article updated successfully!',
+                'alert-type'=>'success'
+            ];
+            return redirect()->route('admin.article.index')->with($notification);
         }
-        return redirect()->route('admin.article.index');
+
+        $notification = [
+            'message'=>'Article dont updated Because has a comment!',
+            'alert-type'=>'error'
+        ];
+        return redirect()->route('admin.article.index')->with($notification);
 
     }
 

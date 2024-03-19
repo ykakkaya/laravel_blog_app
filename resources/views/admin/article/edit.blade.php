@@ -4,6 +4,7 @@
     <div class="card">
         <form action="{{route('admin.article.update',$article->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method("PUT")
             <label> Title</label>
             <input type="text" class="form-control" name="title" value="{{$article->title}}">
             <br>
@@ -11,7 +12,7 @@
             <textarea class="form-control" name="short_description">{{$article->short_description}}</textarea>
             <br>
             <label> Description</label>
-            <textarea class="form-control" id="summernote" name="long_description">{{$article->long_description}}</textarea>
+            <textarea class="form-control" id="summernote" name="long_description">{!!$article->long_description!!}</textarea>
             <br>
             <label> Status</label>
             <select class="custom-select" name="status">

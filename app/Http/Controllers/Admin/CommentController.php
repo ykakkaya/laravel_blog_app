@@ -70,7 +70,12 @@ class CommentController extends Controller
             'description'=>$request->description,
             'status'=>$request->status,
         ]);
-        return redirect()->route('admin.comment.index');
+        $notification = [
+            'message'=>'Comment updated successfully!',
+            'alert-type'=>'success'
+        ];
+
+        return redirect()->route('admin.comment.index')->with($notification);
     }
 
     /**

@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/article-create',[ArticleController::class,'create'])->name('admin.article.create');
         Route::post('/article-store',[ArticleController::class,'store'])->name('admin.article.store');
         Route::get('/article-edit/{id}',[ArticleController::class,'edit'])->name('admin.article.edit');
-        Route::post('/article-update/{id}',[ArticleController::class,'update'])->name('admin.article.update');
+        Route::put('/article-update/{id}',[ArticleController::class,'update'])->name('admin.article.update');
         Route::get('/article-destroy/{id}',[ArticleController::class,'destroy'])->name('admin.article.destroy');
 
         //category

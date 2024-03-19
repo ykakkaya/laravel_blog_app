@@ -34,6 +34,10 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+  <!--toastr-->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -150,6 +154,31 @@ $(document).ready(function() {
   });
 });
 </script>
+
+<!--toastr-->
+<script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+       case 'info':
+       toastr.info(" {{ Session::get('message') }} ");
+       break;
+
+       case 'success':
+       toastr.success(" {{ Session::get('message') }} ");
+       break;
+
+       case 'warning':
+       toastr.warning(" {{ Session::get('message') }} ");
+       break;
+
+       case 'error':
+       toastr.error(" {{ Session::get('message') }} ");
+       break;
+    }
+    @endif
+   </script>
+
 </body>
 
 </html>

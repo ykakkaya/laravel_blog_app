@@ -36,8 +36,11 @@ class CategoryController extends Controller
             'title'=>$request->title,
             'status'=>$request->status,
         ]);
-
-        return redirect()->route('admin.category.index');
+        $notification = [
+            'message'=>'Category created successfully!',
+            'alert-type'=>'success'
+        ];
+        return redirect()->route('admin.category.index')->with($notification);
     }
 
     /**
@@ -67,7 +70,11 @@ class CategoryController extends Controller
             'title'=>$request->title,
             'status'=>$request->status,
         ]);
-        return redirect()->route('admin.category.index');
+        $notification = [
+            'message'=>'Category updated successfully!',
+            'alert-type'=>'success'
+        ];
+        return redirect()->route('admin.category.index')->with($notification);
     }
 
     /**
