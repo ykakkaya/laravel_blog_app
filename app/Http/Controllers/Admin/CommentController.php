@@ -38,7 +38,29 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $comment = Comment::create([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'user_id'=>$request->user_id,
+            'article_id'=>$request->article_id,
+
+        ]);
+        if ($comment) {
+            $notification = [
+                'message' => 'your comment is successfully added.',
+                'alert-type' => 'success'
+            ];
+        } else {
+            $notification = [
+                'message' => 'your comment is not added.',
+                'alert-type' => 'error'
+            ];
+        }
+
+        return redirect()->back()->with($notification);
+
+
     }
 
     /**

@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/comment-show/{id}',[CommentController::class,'show'])->name('admin.comment.show');
         Route::get('/comment-edit/{id}',[CommentController::class,'edit'])->name('admin.comment.edit');
         Route::post('/comment-update/{id}',[CommentController::class,'update'])->name('admin.comment.update');
+        Route::post('/comment-store',[CommentController::class,'store'])->name('admin.comment.store');
 
     });
 });
@@ -62,5 +63,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/index',[HomeController::class,'index'])->name('home.index');
 Route::get('/post/{id}',[HomeController::class,'show'])->name('home.post.show');
+
 
 require __DIR__.'/auth.php';
