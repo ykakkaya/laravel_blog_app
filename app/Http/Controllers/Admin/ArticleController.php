@@ -84,7 +84,7 @@ class ArticleController extends Controller
     {
 
         $article=Article::with('comments')->findorfail($id);
-
+        //article has a comment dont update it
         if(($article->comments->count()==0)){
 
 
@@ -125,6 +125,7 @@ class ArticleController extends Controller
     {
 
             $article=Article::findorfail($id);
+            //article has a comment dont delete it
             if($article->comments->count()==0){
                  $article->delete();
                  $notification = [
