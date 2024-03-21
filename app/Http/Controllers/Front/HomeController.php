@@ -38,7 +38,7 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        $article=Article::findOrFail($id)->with('comments')->first();
+        $article=Article::findOrFail($id);
         return view('front.post',compact('article'));
     }
 

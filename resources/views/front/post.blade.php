@@ -67,21 +67,19 @@
     <h5 class="d-flex justify-content-center">Please login to comment</h5>
     @endif
     <!-- Comments show-->
-    @foreach ($article->comments as $comment)
-    <div class="d-flex justify-content-center">
-        <div class="post-preview">
-
-            <h6 class="post-title">{{ $comment->title }}</h6>
-            <p class="post-subtitle">{{ $comment->description }}</p>
-
-            <p class="post-meta">
-                Posted by
-                <a href="#!">{{ $comment->user->name }}</a>
-            </p>
+    @foreach ($article->commentsOk as $comment)
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p>{{$comment->title}}</p>
+                    <p>{{$comment->description}}</p>
+                    <p>Posted by {{$comment->user->name}} on {{$comment->created_at->format('d','m','y')}}</p>
+                </div>
+            </div>
         </div>
-        <!-- Divider-->
-</div>
-    <hr class="my-4" />
+    </article>
+    <hr>
     @endforeach
 
 

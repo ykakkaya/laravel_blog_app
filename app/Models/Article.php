@@ -17,6 +17,10 @@ class Article extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+    public function commentsOk()
+    {
+        return $this->hasMany(Comment::class)->where('status', 1);
+    }
     public function user(){
         return $this->belongsTo(User::class);
     }

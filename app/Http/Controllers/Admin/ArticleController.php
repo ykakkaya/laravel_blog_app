@@ -83,11 +83,12 @@ class ArticleController extends Controller
     public function update(Request $request, string $id)
     {
 
-        $article=Article::findorfail($id);
-        if(!$article->has('comments')){
+        $article=Article::with('comments')->findorfail($id);
 
-            $image='';
+        if(($article->comments->count()==0)){
 
+
+            $image=$article->image;
             if ($request->hasFile('image')) {
                 $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
                 $request->file('image')->move(public_path('uploads'), $imageName);
@@ -122,8 +123,22 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        $article=Article::findorfail($id);
-        $article->delete();
-        return redirect()->route('admin.article.index');
+
+            $article=Article::findorfail($id);
+            if($article->comments->count()==0){
+                 $article->delete();
+                 $notification = [
+                    'message'=>'Article deleted successfully!',
+                    'alert-type'=>'success'
+                ];
+
+                }else{
+                    $notification = [
+                    'message'=>'Article dont deleted Because has a comment!',
+                    'alert-type'=>'error'
+                ];
+                }
+
+        return redirect()->route('admin.article.index')->with($notification);
     }
 }

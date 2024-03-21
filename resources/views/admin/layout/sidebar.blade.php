@@ -76,7 +76,7 @@
             <p>
               Comments
               <i class="right fas fa-angle-right"></i>
-              <span class="badge badge-info right">6</span>
+              <span class="badge badge-info right">{{App\Models\Article::where('user_id', auth()->user()->id)->count()}}</span>
             </p>
           </a>
           <ul class="nav nav-treeview">
