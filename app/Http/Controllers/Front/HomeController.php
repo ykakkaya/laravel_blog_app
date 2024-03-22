@@ -13,6 +13,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //if article has not a comment and created_at is older than 1 year, soft delete it
+        $postsToDelete = Article::whereDoesntHave('comments')
+        ->where('created_at', '<=', now()->subYear())
+        ->get();
+        foreach ($postsToDelete as $post) {
+            $post->delete();
+        }
+
+        //get all articles from database
         $articles = Article::latest()->where('status','1')->get();
         return view('front.index', compact('articles'));
     }

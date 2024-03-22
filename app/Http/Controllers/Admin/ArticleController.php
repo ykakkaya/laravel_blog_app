@@ -90,6 +90,7 @@ class ArticleController extends Controller
 
             $image=$article->image;
             if ($request->hasFile('image')) {
+                unlink($article->image);
                 $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
                 $request->file('image')->move(public_path('uploads'), $imageName);
                 $image = 'uploads/' . $imageName;
