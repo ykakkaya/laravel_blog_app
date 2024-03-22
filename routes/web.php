@@ -28,14 +28,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
     Route::prefix('admin')->group(function () {
-//article
+        //article
         Route::get('/article',[ArticleController::class,'index'])->name('admin.article.index');
         Route::get('/article-create',[ArticleController::class,'create'])->name('admin.article.create');
         Route::post('/article-store',[ArticleController::class,'store'])->name('admin.article.store');
