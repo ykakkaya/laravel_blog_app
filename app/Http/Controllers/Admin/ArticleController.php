@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Article;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ArticleController extends Controller
 {
@@ -35,8 +37,11 @@ class ArticleController extends Controller
     {
         $image='';
         if ($request->hasFile('image')) {
-            $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('uploads'), $imageName);
+            $manager = new ImageManager(new Driver());
+             $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
+            $img = $manager->read($request->file('image'));
+            $img=$img->resize(1900,1267);
+            $img->save(public_path('uploads').'/' . $imageName);
             $image = 'uploads/' . $imageName;
         }
 
@@ -90,9 +95,12 @@ class ArticleController extends Controller
 
             $image=$article->image;
             if ($request->hasFile('image')) {
-                unlink($article->image);
+                $manager = new ImageManager(new Driver());
+                unlink($image);
+                $img = $manager->read($request->file('image'));
                 $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
-                $request->file('image')->move(public_path('uploads'), $imageName);
+                $img = $img->resize(1900, 1267);
+                $img->save(public_path('uploads').'/' . $imageName);
                 $image = 'uploads/' . $imageName;
             };
             $article->update([

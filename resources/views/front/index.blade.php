@@ -35,7 +35,7 @@
                 @foreach ($articles as $article)
                 <div class="post-preview" style="display: flex; align-items: center;">
                     <a href="{{ route('home.post.show', $article->id) }}" style="flex: 1;">
-                        <img src="{{ $article->image }}" alt="" style="height: 100px; margin-right: 10px;">
+                        <img src="{{ $article->image }}" alt="" style="height: 150px; margin-right: 10px;">
                         <div>
                             <h2 class="post-title">{{ $article->title }}</h2>
                             <h5 class="post-subtitle">{{ $article->short_description }}</h3>

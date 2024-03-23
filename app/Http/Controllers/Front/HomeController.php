@@ -28,11 +28,16 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->search;
+        $search = strtolower($request->search);
+
         $articles = Article::where('title','like','%'.$search.'%')
         ->orwhere('short_description','like','%'.$search.'%')
         ->orwhere('long_description','like','%'.$search.'%')
+        ->orWhereHas('user', function($q) use ($search){
+            $q->where('name', 'like', '%'.$search.'%');
+        })
         ->get();
+
         return view('front.index', compact('articles'));
 
     }
