@@ -57,12 +57,16 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::post('/comment-update/{id}',[CommentController::class,'update'])->name('admin.comment.update');
         Route::post('/comment-store',[CommentController::class,'store'])->name('admin.comment.store');
 
+
+
     });
 });
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/index',[HomeController::class,'index'])->name('home.index');
 Route::get('/post/{id}',[HomeController::class,'show'])->name('home.post.show');
+//search
+Route::get('/search',[HomeController::class,'search'])->name('home.search');
 
 
 require __DIR__.'/auth.php';

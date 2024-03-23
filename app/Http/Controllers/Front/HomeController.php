@@ -26,6 +26,17 @@ class HomeController extends Controller
         return view('front.index', compact('articles'));
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $articles = Article::where('title','like','%'.$search.'%')
+        ->orwhere('short_description','like','%'.$search.'%')
+        ->orwhere('long_description','like','%'.$search.'%')
+        ->get();
+        return view('front.index', compact('articles'));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
