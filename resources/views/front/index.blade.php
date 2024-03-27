@@ -48,7 +48,7 @@
                 <!-- Divider-->
                 <hr>
             @endforeach
-
+{{$articles->links()}}
 
 
                 <!-- Post preview-->

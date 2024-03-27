@@ -22,7 +22,7 @@ class HomeController extends Controller
         }
 
         //get all articles from database
-        $articles = Article::latest()->where('status','1')->get();
+        $articles = Article::latest()->where('status','1')->paginate(10);
         return view('front.index', compact('articles'));
     }
 
@@ -36,7 +36,7 @@ class HomeController extends Controller
         ->orWhereHas('user', function($q) use ($search){
             $q->where('name', 'like', '%'.$search.'%');
         })
-        ->get();
+        ->paginate(10);
 
         return view('front.index', compact('articles'));
 
