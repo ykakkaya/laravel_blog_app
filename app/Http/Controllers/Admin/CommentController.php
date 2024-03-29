@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Article;
 use App\Models\User;
+use Mail;
 
 class CommentController extends Controller
 {
@@ -51,6 +52,19 @@ class CommentController extends Controller
                 'message' => 'your comment is successfully added.',
                 'alert-type' => 'success'
             ];
+
+            //email notification
+
+            $article = Article::find($request->article_id);
+            Mail::raw("{{$article->user->name}} There is a new Comment Please check and change comment status."
+
+            , function ($message) use ($article) {
+                $message->from('info@abc.com', 'Website');
+                $message->sender('info@abc.com', 'Website');
+                $message->to($article->user->email, $article->user->name);
+                $message->subject(' Website Comment Alert');
+            });
+
         } else {
             $notification = [
                 'message' => 'your comment is not added.',
